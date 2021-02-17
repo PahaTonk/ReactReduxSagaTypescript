@@ -9,6 +9,17 @@ const FetchedPosts: React.FC = () => {
   const posts: IPost[] = useSelector(
     (state: IRootReducer): IPost[] => state.fetchedPostsState.posts,
   );
+  const loading: boolean = useSelector(
+    (state: IRootReducer): boolean => state.appState.loading,
+  );
+
+  if (loading) {
+    return (
+      <div className="spinner-border text-primary" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    );
+  }
 
   if (!posts.length) {
     return (

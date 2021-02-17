@@ -1,4 +1,4 @@
-import { IActionPostsType, ILocalPosts } from '../interfaces';
+import { IActionPosts, ILocalPosts } from '../interfaces';
 import { CREATE_POST } from './types';
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
 
 export const postsReducer = (
   state: ILocalPosts = initialState,
-  action: IActionPostsType,
+  action: IActionPosts,
 ): ILocalPosts => {
   switch (action.type) {
     case CREATE_POST:

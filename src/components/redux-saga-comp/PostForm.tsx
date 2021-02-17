@@ -1,10 +1,10 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { connect } from 'react-redux';
-import { IActionPostsType, IPost } from '../../interfaces';
+import { IActionPosts, IPost } from '../../interfaces';
 import { createPost } from '../../redux/actions';
 
 type Props = {
-  createPost(post: IPost): IActionPostsType;
+  createPost(post: IPost): IActionPosts;
 };
 type State = {
   title: string;

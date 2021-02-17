@@ -1,4 +1,4 @@
-import { IActionFetchPostsType, ILocalPosts } from '../interfaces';
+import { IActionFetchPosts, ILocalPosts } from '../interfaces';
 import { FETCH_POST } from './types';
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
 
 export const fetchedPostsReducer = (
   state: ILocalPosts = initialState,
-  action: IActionFetchPostsType,
+  action: IActionFetchPosts,
 ): ILocalPosts => {
   switch (action.type) {
     case FETCH_POST:

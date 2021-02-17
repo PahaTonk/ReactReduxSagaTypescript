@@ -1,4 +1,9 @@
-import { CREATE_POST, FETCH_POST } from './redux/types';
+import {
+  CREATE_POST,
+  FETCH_POST,
+  HIDE_LOADER,
+  SHOW_LOADER,
+} from './redux/types';
 
 export interface ITodo {
   title: string;
@@ -15,16 +20,25 @@ export interface ILocalPosts {
   posts: IPost[];
 }
 
-export interface IActionFetchPostsType {
+export interface IActionFetchPosts {
   type: typeof FETCH_POST;
   payload: IPost[];
 }
-export interface IActionPostsType {
+export interface IActionPosts {
   type: typeof CREATE_POST;
   payload: IPost;
+}
+
+export interface IApp {
+  loading: boolean;
+}
+
+export interface IActionApp {
+  type: typeof SHOW_LOADER | typeof HIDE_LOADER;
 }
 
 export interface IRootReducer {
   postsState: ILocalPosts;
   fetchedPostsState: ILocalPosts;
+  appState: IApp;
 }
