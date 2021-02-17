@@ -1,16 +1,17 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IPost, IRootReducer } from '../../interfaces';
+import { IPost } from '../../interfaces';
 import { fetchPosts } from '../../redux/actions';
+import { RootState } from '../../redux/rootReducer';
 import { Post } from './Post';
 
 const FetchedPosts: React.FC = () => {
   const dispatch = useDispatch();
   const posts: IPost[] = useSelector(
-    (state: IRootReducer): IPost[] => state.fetchedPostsState.posts,
+    (state: RootState): IPost[] => state.fetchedPostsState.posts,
   );
   const loading: boolean = useSelector(
-    (state: IRootReducer): boolean => state.appState.loading,
+    (state: RootState): boolean => state.appState.loading,
   );
 
   if (loading) {

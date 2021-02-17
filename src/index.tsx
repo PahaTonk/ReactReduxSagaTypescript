@@ -5,8 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { compose, createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { rootReducer } from './redux/rootReducer';
+import rootReducer from './redux/rootReducer';
 import thunk from 'redux-thunk';
+import { forbiddenWordsMiddleware } from './redux/middleware';
 
 declare global {
   interface Window {
@@ -17,7 +18,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk)),
+  composeEnhancers(applyMiddleware(thunk, forbiddenWordsMiddleware)),
 );
 
 ReactDOM.render(

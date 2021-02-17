@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { IPost, IRootReducer } from '../../interfaces';
+import { IPost } from '../../interfaces';
+import { RootState } from '../../redux/rootReducer';
 import { Post } from './Post';
 
 type Props = {
@@ -21,7 +22,7 @@ const Posts: React.FC<Props> = ({ posts }) => {
   );
 };
 
-const mapStateToProps = (state: IRootReducer): Props => ({
+const mapStateToProps = (state: RootState): Props => ({
   posts: state.postsState.posts,
 });
 

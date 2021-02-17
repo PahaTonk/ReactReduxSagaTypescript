@@ -36,9 +36,3 @@ export interface IApp {
 export interface IActionApp {
   type: typeof SHOW_LOADER | typeof HIDE_LOADER;
 }
-
-export interface IRootReducer {
-  postsState: ILocalPosts;
-  fetchedPostsState: ILocalPosts;
-  appState: IApp;
-}

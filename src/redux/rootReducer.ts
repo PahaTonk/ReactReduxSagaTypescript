@@ -3,8 +3,11 @@ import { appReducer } from './appReducer';
 import { fetchedPostsReducer } from './fetchedPostsReducer';
 import { postsReducer } from './postsReducer';
 
-export const rootReducer = combineReducers({
+const rootReducer = combineReducers({
   postsState: postsReducer,
   fetchedPostsState: fetchedPostsReducer,
   appState: appReducer,
 });
+
+export default rootReducer;
+export type RootState = ReturnType<typeof rootReducer>;
