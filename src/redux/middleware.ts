@@ -1,7 +1,7 @@
 import { Middleware, Dispatch } from 'redux';
 import { CREATE_POST } from './types';
 
-const forbitten: string[] = ['test', 'yes', 'luka'];
+const forbidden: string[] = ['test', 'yes', 'luka'];
 
 // из первой функции можем достать dispatch
 export const forbiddenWordsMiddleware: Middleware = () => (
@@ -9,7 +9,7 @@ export const forbiddenWordsMiddleware: Middleware = () => (
 ) => action => {
   if (action.type !== CREATE_POST) return next(action);
 
-  const found: number = forbitten.findIndex(
+  const found: number = forbidden.findIndex(
     word => word === action.payload.title,
   );
 

@@ -5,9 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { compose, createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from './redux/rootReducer';
+import createSagaMiddleware from 'redux-saga';
 import thunk from 'redux-thunk';
+import rootReducer from './redux/rootReducer';
 import { forbiddenWordsMiddleware } from './redux/middleware';
+import { sagaWatcher } from './redux/sagas';
+
+const saga = createSagaMiddleware();
 
 declare global {
   interface Window {
@@ -18,8 +22,10 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk, forbiddenWordsMiddleware)),
+  composeEnhancers(applyMiddleware(thunk, forbiddenWordsMiddleware, saga)),
 );
+
+saga.run(sagaWatcher);
 
 ReactDOM.render(
   <React.StrictMode>

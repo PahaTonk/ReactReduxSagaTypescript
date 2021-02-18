@@ -2,6 +2,7 @@ import {
   CREATE_POST,
   FETCH_POST,
   HIDE_LOADER,
+  REQUEST_POSTS,
   SHOW_LOADER,
 } from './redux/types';
 
@@ -20,17 +21,22 @@ export interface ILocalPosts {
   posts: IPost[];
 }
 
+export interface IApp {
+  loading: boolean;
+}
+
 export interface IActionFetchPosts {
   type: typeof FETCH_POST;
   payload: IPost[];
 }
+
 export interface IActionPosts {
   type: typeof CREATE_POST;
   payload: IPost;
 }
 
-export interface IApp {
-  loading: boolean;
+export interface IActioRequestPost {
+  type: typeof REQUEST_POSTS;
 }
 
 export interface IActionApp {

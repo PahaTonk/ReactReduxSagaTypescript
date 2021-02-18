@@ -3,8 +3,15 @@ import {
   IActionPosts,
   IActionFetchPosts,
   IActionApp,
+  IActioRequestPost,
 } from '../interfaces';
-import { CREATE_POST, FETCH_POST, HIDE_LOADER, SHOW_LOADER } from './types';
+import {
+  CREATE_POST,
+  FETCH_POST,
+  HIDE_LOADER,
+  REQUEST_POSTS,
+  SHOW_LOADER,
+} from './types';
 
 export function createPost(post: IPost): IActionPosts {
   return {
@@ -13,18 +20,26 @@ export function createPost(post: IPost): IActionPosts {
   };
 }
 
-export function fetchPosts(): Function {
-  return async (dispatch: Function): Promise<void> => {
-    dispatch(showLoader());
-    const response: Response = await fetch('http://localhost:3000/posts');
-    const json: IPost[] = await response.json();
-    const actionData: IActionFetchPosts = {
-      type: FETCH_POST,
-      payload: json,
-    };
+// redux-thunk
+// export function fetchPosts(): Function {
+//   return async (dispatch: Function): Promise<void> => {
+//     dispatch(showLoader());
+//     const response: Response = await fetch('http://localhost:3000/posts');
+//     const json: IPost[] = await response.json();
+//     const actionData: IActionFetchPosts = {
+//       type: FETCH_POST,
+//       payload: json,
+//     };
 
-    dispatch(actionData);
-    dispatch(hideLoader());
+//     dispatch(actionData);
+//     dispatch(hideLoader());
+//   };
+// }
+
+// redux-saga, работа по запросу в sagas.js
+export function fetchPosts(): IActioRequestPost {
+  return {
+    type: REQUEST_POSTS,
   };
 }
 
